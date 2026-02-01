@@ -1,5 +1,5 @@
-import { Calendar, Phone, Star, Shield, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Phone, Star, Shield, Clock, Calendar } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 const Hero = () => {
   return (
@@ -36,10 +36,14 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Button className="btn-cta text-base px-8 py-4 h-auto">
-                <Calendar className="w-5 h-5" />
-                Book Appointment
-              </Button>
+              <BookingForm
+                trigger={
+                  <button className="btn-cta text-base px-8 py-4">
+                    <Calendar className="w-5 h-5" />
+                    Book Appointment
+                  </button>
+                }
+              />
               <a href="tel:0298765432" className="btn-secondary text-base px-8 py-4">
                 <Phone className="w-5 h-5" />
                 Call (02) 9876 5432

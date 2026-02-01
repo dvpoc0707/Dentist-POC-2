@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import BookingForm from "@/components/BookingForm";
 
 const Footer = () => {
   const services = [
@@ -32,10 +32,14 @@ const Footer = () => {
                 New patients welcome. Experience the difference of patient-first care.
               </p>
             </div>
-            <Button className="btn-cta text-base px-8 py-4 h-auto whitespace-nowrap">
-              <Calendar className="w-5 h-5" />
-              Book Now
-            </Button>
+            <BookingForm
+              trigger={
+                <button className="btn-cta text-base px-8 py-4 whitespace-nowrap">
+                  <Calendar className="w-5 h-5" />
+                  Book Now
+                </button>
+              }
+            />
           </div>
         </div>
       </div>
