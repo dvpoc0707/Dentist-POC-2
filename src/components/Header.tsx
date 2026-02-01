@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import BookingForm from "@/components/BookingForm";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,11 +68,15 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               (02) 9876 5432
             </a>
-            <Button className="btn-cta text-sm" size="sm">
-              <Calendar className="w-4 h-4" />
-              <span className="hidden sm:inline">Book Appointment</span>
-              <span className="sm:hidden">Book</span>
-            </Button>
+            <BookingForm
+              trigger={
+                <button className="btn-cta text-sm px-4 py-2.5">
+                  <Calendar className="w-4 h-4" />
+                  <span className="hidden sm:inline">Book Appointment</span>
+                  <span className="sm:hidden">Book</span>
+                </button>
+              }
+            />
 
             {/* Mobile Menu Button */}
             <button

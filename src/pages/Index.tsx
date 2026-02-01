@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TrustSignals from "@/components/TrustSignals";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import BookingCTA from "@/components/BookingCTA";
 import Location from "@/components/Location";
@@ -17,6 +18,7 @@ const Index = () => {
         <TrustSignals />
         <Services />
         <WhyChooseUs />
+        <BeforeAfter />
         <Testimonials />
         <BookingCTA />
         <Location />

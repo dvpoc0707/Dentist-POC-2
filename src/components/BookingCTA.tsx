@@ -1,5 +1,5 @@
 import { Calendar, Phone, Clock, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import BookingForm from "@/components/BookingForm";
 
 const BookingCTA = () => {
   const benefits = [
@@ -37,10 +37,15 @@ const BookingCTA = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="btn-cta bg-accent hover:bg-accent/90 text-base px-8 py-4 h-auto">
-                <Calendar className="w-5 h-5" />
-                Book Appointment Now
-              </Button>
+              <BookingForm
+                trigger={
+                  <button className="btn-cta bg-accent hover:bg-accent/90 text-base px-8 py-4">
+                    <Calendar className="w-5 h-5" />
+                    Book Appointment Now
+                  </button>
+                }
+              />
+              
               <a
                 href="tel:0298765432"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground/10 text-primary-foreground font-semibold rounded-lg hover:bg-primary-foreground/20 transition-colors"
