@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, Calendar } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
+import Logo from "./Logo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,19 +33,7 @@ const Header = () => {
       <div className="container-content">
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-hero flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">S</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-display font-bold text-lg text-foreground">
-                Smile Dental
-              </span>
-              <span className="block text-xs text-muted-foreground -mt-0.5">
-                Sydney CBD
-              </span>
-            </div>
-          </a>
+          <Logo />
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
