@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Calendar, Clock, User, Mail, Phone, CheckCircle, X } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, User, Mail, Phone, CheckCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +15,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -45,7 +49,7 @@ const bookingSchema = z.object({
     .max(15, "Phone number is too long")
     .regex(/^[0-9+\-\s()]+$/, "Please enter a valid phone number"),
   service: z.string().min(1, "Please select a service"),
-  preferredDate: z.string().min(1, "Please select a preferred date"),
+  preferredDate: z.date({ required_error: "Please select a preferred date" }),
   preferredTime: z.string().min(1, "Please select a preferred time"),
   notes: z
     .string()
@@ -68,6 +72,7 @@ const BookingForm = ({ trigger }: BookingFormProps) => {
     register,
     handleSubmit,
     setValue,
+    watch,
     reset,
     formState: { errors },
   } = useForm<BookingFormData>({
@@ -133,6 +138,7 @@ const BookingForm = ({ trigger }: BookingFormProps) => {
     
     console.log("Booking submitted:", {
       ...data,
+      preferredDate: data.preferredDate ? format(data.preferredDate, "yyyy-MM-dd") : undefined,
       phone: "[REDACTED]",
       email: "[REDACTED]",
     });
@@ -154,7 +160,7 @@ const BookingForm = ({ trigger }: BookingFormProps) => {
       <DialogTrigger asChild>
         {trigger || (
           <Button className="btn-cta">
-            <Calendar className="w-5 h-5" />
+            <CalendarIcon className="w-5 h-5" />
             Book Appointment
           </Button>
         )}
@@ -282,21 +288,33 @@ const BookingForm = ({ trigger }: BookingFormProps) => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Preferred Date *</Label>
-                  <Select
-                    onValueChange={(value) => setValue("preferredDate", value)}
-                  >
-                    <SelectTrigger>
-                      <Calendar className="w-4 h-4 mr-2 text-muted-foreground" />
-                      <SelectValue placeholder="Select date" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {getAvailableDates().map((date) => (
-                        <SelectItem key={date.value} value={date.value}>
-                          {date.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-start text-left font-normal",
+                          !watch("preferredDate") && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {watch("preferredDate") ? (
+                          format(watch("preferredDate"), "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={watch("preferredDate")}
+                        onSelect={(date) => setValue("preferredDate", date as Date)}
+                        disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
                   {errors.preferredDate && (
                     <p className="text-xs text-destructive">
                       {errors.preferredDate.message}
@@ -355,7 +373,7 @@ const BookingForm = ({ trigger }: BookingFormProps) => {
                   </>
                 ) : (
                   <>
-                    <Calendar className="w-5 h-5" />
+                    <CalendarIcon className="w-5 h-5" />
                     Request Appointment
                   </>
                 )}
