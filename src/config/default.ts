@@ -2,7 +2,7 @@ import { ClinicConfig } from "./types";
 
 export const defaultConfig: ClinicConfig = {
   clinic: {
-    name: "Smile Dental",
+    name: "UrbanSmile Dental",
     tagline: "Sydney CBD",
     location: "Sydney CBD",
   },

@@ -29,7 +29,7 @@ const Location = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Smile Dental Sydney location"
+              title="UrbanSmile Dental Sydney location"
             />
           </div>
 
@@ -41,7 +41,7 @@ const Location = () => {
                 <MapPin className="w-5 h-5 text-primary" />
                 Address
               </h3>
-              <p className="text-foreground font-medium">Smile Dental Sydney</p>
+              <p className="text-foreground font-medium">UrbanSmile Dental Sydney</p>
               <p className="text-muted-foreground">
                 Level 5, 123 George Street<br />
                 Sydney NSW 2000

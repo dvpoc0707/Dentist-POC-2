@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className="font-display font-bold text-lg">
-                    Smile Dental
+                    UrbanSmile Dental
                   </span>
                   <span className="block text-xs text-primary-foreground/60 -mt-0.5">
                     Sydney CBD
@@ -151,7 +151,7 @@ const Footer = () => {
       <div className="py-6 border-t border-primary-foreground/10">
         <div className="container-content px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/50">
-            <p>© 2024 Smile Dental Sydney. All rights reserved.</p>
+            <p>© 2024 UrbanSmile Dental. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <a href="/privacy" className="hover:text-primary-foreground/80 transition-colors">
                 Privacy Policy
