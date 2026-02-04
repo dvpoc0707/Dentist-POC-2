@@ -60,6 +60,9 @@ export interface ClinicConfig {
   // Testimonials
   testimonials: Testimonial[];
 
+  // Before & After Cases
+  beforeAfter?: BeforeAfterCase[];
+
   // SEO
   seo?: {
     title?: string;
@@ -88,4 +91,13 @@ export interface Testimonial {
   rating: number;
   text: string;
   treatment?: string;
+}
+
+export interface BeforeAfterCase {
+  id: number;
+  treatment: string;
+  duration: string;
+  beforeImage: string;
+  afterImage: string;
+  description: string;
 }
