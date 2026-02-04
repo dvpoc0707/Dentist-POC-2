@@ -5,6 +5,10 @@ export const defaultConfig: ClinicConfig = {
     name: "UrbanSmile Dental",
     tagline: "Sydney CBD",
     location: "Sydney CBD",
+    logo: {
+      full: "/Dental-Logo-Design.jpg", // Path to logo image in public folder
+      initial: "U",
+    },
   },
   contact: {
     phone: "(02) 9876 5432",

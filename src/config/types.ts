@@ -6,6 +6,10 @@ export interface ClinicConfig {
     name: string;
     tagline: string;
     location?: string;
+    logo?: {
+      full?: string; // Logo image URL/path
+      initial?: string; // Fallback initial
+    };
   };
 
   // Contact Information
