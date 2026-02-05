@@ -69,10 +69,14 @@ const Hero = () => {
               {/* Main Image Placeholder */}
               <div className="absolute inset-0 bg-gradient-hero rounded-3xl opacity-10" />
               <div className="absolute inset-4 bg-surface-elevated rounded-2xl shadow-card overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=750&fit=crop&crop=faces"
-                  alt="Modern dental clinic interior"
+                <video
+                  src="/14278700_2160_3840_30fps.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
+                  aria-label="Modern dental clinic video"
                 />
               </div>
               
